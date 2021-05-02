@@ -1,6 +1,6 @@
 package hu.bme.mit.spaceship;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
 * Class storing and managing the torpedoes of a ship
@@ -15,7 +15,7 @@ public class TorpedoStore {
   private int torpedoCount = 0;
 
   // simulate random overheating of the launcher bay which prevents firing
-  private Random generator = new Random();
+  private SecureRandom generator = new SecureRandom();
 
   public TorpedoStore(int numberOfTorpedos){
     this.torpedoCount = numberOfTorpedos;
@@ -38,7 +38,7 @@ public class TorpedoStore {
 
     boolean success = false;
 
-    double r = this.generator.nextDouble();
+    var r = this.generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
       // successful firing
